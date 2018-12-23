@@ -1,1 +1,69 @@
-DASHBOARD
+{% extends 'base_layout.html' %}
+
+{% block title %}Panel użytkownika{% endblock %}
+
+{% block content %}
+
+    <section class="section">
+
+    {% if user.is_authenticated %}
+<div class="columns">
+    <div class="column is-full">
+
+            <h1 class="title">Twój profil</h1>
+            <h2 class="subtitle">Wszystkie twoje dane w jednym miejscu!</h2>
+            <hr>
+
+    </div>
+</div>
+    <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+
+    <div class="content">
+
+            <article class="media">
+                <figure class="media-left image is-128x128">
+                    <img class="is-rounded" src="http://localhost:8000{{ user.image.url }}">
+                </figure>
+                <figure class="media-content is-marginless has-text-left">
+                    <h1>{{ user.username }}</h1>
+                    <p class="subtitle is-6">{{ user.snippet }}</p>
+                </figure>
+                <figure class="media-right"></figure>
+            </article>
+    
+            <table class="table is-bordered">
+                <tbody>
+                    <tr>
+                        <th>Imie:</th>
+                        <td>{{ user.first_name|default:"Brak" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nazwisko:</th>
+                        <td>{{ user.last_name|default:"Brak" }}</td>
+                    </tr>
+                    <tr>
+                        <th>E-mail:</th>
+                        <td>{{ user.email|default:"Brak" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Strona WWW:</th>
+                        <td><a href="{{ user.url }}">{{ user.url }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            </div>
+
+        </div>
+    </div>
+    
+    {% else %}
+
+    <p>Sorry, you must logged in before you can look for this page</p>
+
+    {% endif %}
+
+    </section>
+
+{% endblock %}

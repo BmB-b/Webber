@@ -1,0 +1,62 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Zaloguj się{% endblock %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>There's something went wrong with what you entered!</p>
+{% endif %}
+
+{% if next %}
+<p>Hey you can't access to this page!</p>
+{% endif %}
+
+{% load widget_tweaks %}
+
+<section class="hero is-medium">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title has-text-centered">Zaloguj:</h1>
+            <div class="columns">
+                <div class="column is-one-third is-offset-one-third">
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+
+
+                        <div class="field">
+                            <label class="label">Login:</label>
+                            <div class="control">
+                            {{ form.username|add_class:'input' }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Hasło:</label>
+                            <div class="control">
+                            {{ form.password|add_class:'input' }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <p class="help">Zapomniałeś hasła? <a href="{% url 'password_reset' %}">Zresetuj je!</a></p>
+                        </div>
+
+                        <div class="field is-grouped">
+                            <div class="control">
+                            <button type="submit" class="button is-link">Zaloguj</button>
+                            </div>
+                            <div class="control">
+                            <button class="button is-text" onClick="javascript:history.go(-1);">Anuluj</button>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="next" value="{{ next }}">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
