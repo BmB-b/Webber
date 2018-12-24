@@ -30,10 +30,16 @@
                             <div class="field">
                                 <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
                                 <div class="control">
-                                    {{ field|add_class:'input' }}
+                                    {% if field.field.widget.input_type == 'radio' %}
+                                        {{ field|add_class:'radio' }}
+                                    {% elif field.field.widget.input_type == 'file' %}
+                                        {{ field|add_class:'file' }}
+                                    {% else %}
+                                        {{ field|add_class:'input' }}
+                                    {% endif %}
                                 </div>
                                 {% for error in field.errors %}
-                                    <span class="help-block">{{ error }}</span>
+                                    <span class="has-text-danger help-block">{{ error }}</span>
                                 {% endfor %}
                             </div>
                         {% endfor %}
