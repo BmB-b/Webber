@@ -22,7 +22,7 @@ def register(request):
             login(request, user)
             return redirect('index')
     else:
-        form = SignUpForm()
+        form = SignUpForm(initial={'gender': False})
     
     context = { 'form': form }
     return render(request, 'registration/register.html', context)

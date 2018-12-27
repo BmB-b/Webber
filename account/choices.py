@@ -1,4 +1,4 @@
 GENDER_CHOICES = (
-    (False, 'Kobieta'), 
-    (True, 'Mężczyzna')
+    (False, 'Mężczyzna'),
+    (True, 'Kobieta')
 )

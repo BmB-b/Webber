@@ -27,21 +27,46 @@
                         {% endfor %}
 
                         {% for field in form.visible_fields %}
-                            <div class="field">
-                                <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
-                                <div class="control">
-                                    {% if field.field.widget.input_type == 'radio' %}
-                                        {{ field|add_class:'radio' }}
-                                    {% elif field.field.widget.input_type == 'file' %}
-                                        {{ field|add_class:'file' }}
-                                    {% else %}
-                                        {{ field|add_class:'input' }}
-                                    {% endif %}
+
+                            {% if field.field.widget.input_type == 'radio' %}
+                                <div class="field">
+                                    <div class="control">
+                                        <label class="radio">{{ field.label }}</label>
+                                        {{ field }}
+                                    </div>
                                 </div>
-                                {% for error in field.errors %}
-                                    <span class="has-text-danger help-block">{{ error }}</span>
-                                {% endfor %}
-                            </div>
+                            {% elif field.field.widget.input_type == 'file' %}
+                                <div class="file">
+                                    <label class="file-label">
+                                        {{ field|add_class:'file-input' }}
+                                        <span class="file-cta">
+                                        <span class="file-icon">
+                                            <i class="fas fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">
+                                            Wybierz plik…
+                                        </span>
+                                        </span>
+                                    </label>
+                                </div>
+                            {% elif field.id_for_label == 'id_biography' %}
+                                <div class="field">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                                    <div class="control">
+                                        {{ field|add_class:'textarea' }}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="field">
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                                    <div class="control">
+                                        {{ field|add_class:'input' }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <p class="help has-text-danger">{{ error }}</p>
+                            {% endfor %}
                         {% endfor %}
 
                         <div class="field is-grouped">

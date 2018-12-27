@@ -6,7 +6,7 @@ from django.db.models.signals import pre_save
 
 # Create your models here.
 class ExtendedUser(AbstractUser):
-    gender = models.BooleanField(default=GENDER_CHOICES[0], choices=GENDER_CHOICES)
+    gender = models.BooleanField(default=GENDER_CHOICES[0][0], choices=GENDER_CHOICES)
     image = models.ImageField(upload_to='avatars/', blank=True)
     url = models.URLField(blank=True)
     biography = models.CharField(max_length=1000, blank=True)
