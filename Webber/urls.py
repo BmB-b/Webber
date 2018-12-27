@@ -25,6 +25,7 @@ urlpatterns = [
 
     # Index
     path('', views.index, name='index'),
+    path('about', views.about, name='about'),
 
     # Login/register
     path('account/', include('account.urls')),
