@@ -3,5 +3,88 @@
 {% block title %}Blog{% endblock %}
 
 {% block content %}
-    INDEX BLOG
+
+<section class="section">
+        
+        <h1 class="title">Blog</h1>
+        <h2 class="subtitle is-5">Każdy ma swoje zdanie, wyraź swoje i ty!</h2>
+        <hr>
+
+        <!-- Main container -->
+        <nav class="level">
+
+            <!-- Left side -->
+            <div class="level-left">
+            <div class="level-item">
+                <p class="subtitle is-5">
+                <strong>0</strong> wpisów
+                </p>
+            </div>
+            <div class="level-item">
+                <div class="field has-addons">
+                <p class="control">
+                    <input class="input" type="text" placeholder="Znajdź wpis">
+                </p>
+                <p class="control">
+                    <button class="button">
+                    Szukaj
+                    </button>
+                </p>
+                </div>
+            </div>
+            </div>
+        
+            <!-- Right side -->
+            <div class="level-right">
+                <p class="level-item"><a>Wszystkie</a></p>
+                <p class="level-item"><strong>Opublikowane</strong></p>
+                <p class="level-item"><a>Kopie robocze</a></p>
+                <p class="level-item"><a>Usunięte</a></p>
+                <p class="level-item">
+                    <a href="#" class="button is-success">Dodaj wpis</a>
+                </p>
+            </div>
+
+        </nav>
+        <hr>
+        <div class="content">
+
+                {% if context %}
+                    {% for el in context %}
+
+                        <article class="media">
+                                <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img src="http://localhost:8000{{ el.thumb.url }}">
+                                </p>
+                                </figure>
+                                <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                    <strong><a href="{{el.id}}">{{ el.title }}</a></strong> <small>@{{ el.author }}</small>
+                                    <br>
+                                    {{ el.snippet|safe }}
+                                    <br>
+                                    <span class="tag is-rounded" style="background-color: {{ el.cat.color }}; color: #fff;">{{ el.cat }}</span>
+                                    </p>
+                                </div>
+                                </div>
+                                <div class="media-right">
+                                <button class="delete"></button>
+                                </div>
+                        </article>
+
+                    {% endfor %}
+                {% else %}
+                
+                    <p class="has-text-centered">
+                        Ups! Zdaje się, że nic tu nie ma.
+                    </p>
+
+                {% endif %}
+
+        </div>
+
+</section>
+
 {% endblock %}
