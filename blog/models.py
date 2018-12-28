@@ -1,8 +1,9 @@
 import uuid
 from colorful.fields import RGBColorField
+from ckeditor.fields import RichTextField
 
 from django.db import models
-
+from django.conf import settings
 
 # Create your models here.
 class Category(models.Model):
@@ -13,3 +14,18 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+class Post(models.Model):
+
+    title = models.CharField(max_length=60)
+    body = RichTextField(max_length=10000)
+    pub_date = models.DateField()
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    cat = models.ForeignKey(Category, to_field='identy', on_delete=models.CASCADE)
+    thumb = models.ImageField(default="default.png")
+
+    def __str__(self):
+        return self.title
+
+    def snippet(self):
+        return self.body[:250] + '...'
