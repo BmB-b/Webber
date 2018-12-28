@@ -1,0 +1,10 @@
+[
+    {
+        "model": "blog.category", 
+        "pk": 1, 
+        "fields": { 
+            "name": "Default", 
+            "color": "#000000"
+        }
+    }
+]
