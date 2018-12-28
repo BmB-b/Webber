@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'account',
     'blog',
     'colorful',
+    'ckeditor',
     'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -129,6 +130,21 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor"
+# CKEDITOR_UPLOAD_PATH = "media/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': '100%',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source']
+        ]
+    }
+}
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
