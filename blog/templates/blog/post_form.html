@@ -1,0 +1,74 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Dodaj wpis{% endblock %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+<section class="section">
+
+    <h1 class="title">Dodaj wpis</h1>
+    <h2 class="subtitle">Chciałbyś dodać nowy wpis na swojego bloga, nic prostszego!</h2>
+    <hr>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="field">
+            <label class="label">Tytuł</label>
+            <div class="control">
+                {{ form.title|add_class:'input' }}
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Wiadomość</label>
+            <div class="control">
+                {{ form.body|safe }}
+            </div>
+        </div>
+        
+        <div class="field">
+            <label class="label">Miniaturka</label>
+            <div class="file has-name">
+                <label class="file-label">
+                    {{ form.thumb|add_class:'file-input' }}
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                            Choose a file…
+                        </span>
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Kategoria</label>
+            <div class="control">
+                <div class="select">
+                {{ form.cat }}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="field is-grouped">
+                
+            <div class="control">
+            <button type="submit" class="button is-link">Wyślij</button>
+            </div>
+            
+            <div class="control">
+            <button class="button is-text" onclick="history.back()">Anuluj</button>
+            </div>
+        
+        </div>
+    </form>
+
+</section>
+
+{% endblock %}

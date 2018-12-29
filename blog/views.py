@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from django.shortcuts import render
 
@@ -15,3 +15,7 @@ class BlogIndex(ListView):
         context['counter'] = Post.objects.count()
         return context
 
+class PostCreate(CreateView):
+    model = Post
+    fields = ['title','body','pub_date','author','cat','thumb']
+        
