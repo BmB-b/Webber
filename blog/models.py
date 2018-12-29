@@ -12,6 +12,9 @@ class Category(models.Model):
     name = models.CharField(max_length=100)
     color = RGBColorField(default="#000000")
 
+    class Meta:
+        verbose_name_plural = 'Categories'
+
     def __str__(self):
         return self.name
 
