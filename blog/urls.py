@@ -12,9 +12,12 @@ urlpatterns = [
     # Add new post
     path('add/', views.PostCreate.as_view(), name='create'),
     
+    # View post detail
+    path('<int:pk>/', views.PostView.as_view(), name='view'),
+    
     # Update exists post
-    #path('<int:pk>/', views.PostUpdate.as_view(), name='update'),
+    #path('<int:pk>/edit', views.PostUpdate.as_view(), name='update'),
     
     # Delete exists post
-    #path('<int:pk>/delete/', views.PostDelete.as_view(), name='delete'),
+    path('<int:pk>/delete', views.PostDelete.as_view(), name='delete'),
 ]

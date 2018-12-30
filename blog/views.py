@@ -1,6 +1,7 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from django.shortcuts import render
+from django.urls import reverse_lazy
 
 from .models import Post
 
@@ -20,5 +21,9 @@ class PostCreate(CreateView):
     fields = ['title','body','pub_date','state','author','cat','thumb']
     success_url = '/'
 
+class PostView(DetailView):
+    model = Post
 
-        
+class PostDelete(DeleteView):
+    model = Post
+    success_url = reverse_lazy('blog:index')

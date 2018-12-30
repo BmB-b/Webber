@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Detail{% endblock %}
+
+{% block content %}
+
+    <div class="columns">
+        <div class="column is-full">
+            <h1 class="title">{{ post.title }}
+                <span class="tag is-rounded" style="color: #fff; background-color: {{ post.cat.color }}" >{{ post.cat }}</span>
+            </h1>
+            <div class="content">
+                    {{ post.body|safe }}
+                </div>
+        </div>
+    </div>
+
+{% endblock %}
