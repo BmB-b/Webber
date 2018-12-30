@@ -17,5 +17,8 @@ class BlogIndex(ListView):
 
 class PostCreate(CreateView):
     model = Post
-    fields = ['title','body','pub_date','author','cat','thumb']
+    fields = ['title','body','pub_date','state','author','cat','thumb']
+    success_url = '/'
+
+
         
