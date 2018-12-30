@@ -20,7 +20,7 @@ class BlogIndex(ListView):
 class PostCreate(CreateView):
     model = Post
     fields = ['title','body','pub_date','state','author','cat','thumb']
-    success_url = '/'
+    success_url = reverse_lazy('blog:index')
 
 class PostView(DetailView):
     model = Post

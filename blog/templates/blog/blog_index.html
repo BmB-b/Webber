@@ -96,21 +96,25 @@
                     <li>
                         <span class="has-text-weight-bold">Strony:&nbsp;&nbsp;</span>
                     </li>
-                    <li>
-                        <a href="?page=1" class="pagination-link">1</a>
-                    </li>
-                    <li>
-                        <span class="pagination-ellipsis">&hellip;</span>
-                    </li>
+                    {% if page_obj.has_previous %}
+                        <li>
+                            <a href="?page=1" class="pagination-link">1</a>
+                        </li>
+                        <li>
+                            <span class="pagination-ellipsis">&hellip;</span>
+                        </li>
+                    {% endif %}
                     <li>
                         <a class="pagination-link is-current">{{ page_obj.number }} </a>
                     </li>
-                    <li>
-                        <span class="pagination-ellipsis">&hellip;</span>
-                    </li>
-                    <li>
-                        <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link">{{ page_obj.paginator.num_pages }}</a>
-                    </li>
+                    {% if page_obj.has_next %}
+                        <li>
+                            <span class="pagination-ellipsis">&hellip;</span>
+                        </li>
+                        <li>
+                            <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link">{{ page_obj.paginator.num_pages }}</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </nav>
         {% endif %}
