@@ -47,9 +47,9 @@
 
         </nav>
         <hr>
+        {% if context %}
         <div class="content">
 
-                {% if context %}
                     {% for el in context %}
 
                         <article class="media">
@@ -75,15 +75,55 @@
                         </article>
 
                     {% endfor %}
-                {% else %}
-                
-                    <p class="has-text-centered">
-                        Ups! Zdaje się, że nic tu nie ma.
-                    </p>
-
-                {% endif %}
 
         </div>
+
+        {% if is_paginated %}
+        <hr class="hr">
+            <nav class="pagination" role="navigation" aria-label="pagination">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}" class="pagination-previous">Poprzednia</a>
+                {% else %}
+                    <a class="pagination-previous" disabled>Poprzednia</a>
+                {% endif %}
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="pagination-next">Następna</a>
+                {% else %}
+                    <a class="pagination-next" disabled>Następna</a>
+                {% endif %}
+                <ul class="pagination-list">
+                    <li>
+                        <span class="has-text-weight-bold">Strony:&nbsp;&nbsp;</span>
+                    </li>
+                    <li>
+                        <a href="?page=1" class="pagination-link">1</a>
+                    </li>
+                    <li>
+                        <span class="pagination-ellipsis">&hellip;</span>
+                    </li>
+                    <li>
+                        <a class="pagination-link is-current">{{ page_obj.number }} </a>
+                    </li>
+                    <li>
+                        <span class="pagination-ellipsis">&hellip;</span>
+                    </li>
+                    <li>
+                        <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link">{{ page_obj.paginator.num_pages }}</a>
+                    </li>
+                </ul>
+            </nav>
+        {% endif %}
+
+        {% else %}
+         
+        <div class="content">
+            <p class="has-text-centered">
+                Ups! Zdaje się, że nic tu nie ma.
+            </p>
+        </div>
+
+        {% endif %}
 
 </section>
 

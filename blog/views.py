@@ -10,6 +10,7 @@ class BlogIndex(ListView):
     model = Post
     template_name = 'blog/blog_index.html'
     context_object_name = 'context'
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super(BlogIndex, self).get_context_data(**kwargs)
