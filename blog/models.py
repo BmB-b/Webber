@@ -6,6 +6,7 @@ from .choices import STATE_CHOICES
 
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 # Create your models here.
 class Category(models.Model):
@@ -32,6 +33,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('blog:view', kwargs={'pk': self.id})
 
     def snippet(self):
         return self.body[:250] + '...'

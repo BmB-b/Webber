@@ -35,6 +35,10 @@ class PostCreate(CreateView):
 class PostView(DetailView):
     model = Post
 
+class PostEdit(UpdateView):
+    model = Post
+    fields = ['title','body','pub_date','state','author','cat','thumb']
+
 class PostDelete(DeleteView):
     model = Post
     success_url = reverse_lazy('blog:index')

@@ -1,18 +1,52 @@
 {% extends 'base_layout.html' %}
 
-{% block title %}Detail{% endblock %}
+{% if context %}
 
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block top %}
+    <section class="hero is-medium is-light is-bold" style="background-image: url('/media/{{ post.thumb }}'); background-repeat: no-repeat; background-size: cover;">
+        <div class="hero-body">
+            <div class="container">
+
+                <div class="is-pulled-right">
+                    {% if user.is_authenticated %}
+                    
+                    {% if user.username == post.author.username %}
+                    <div class="buttons is-grouped">
+                        <a href="edit" class="button is-success is-rounded">Edytuj</a>
+                        <a href="delete" class="button is-danger is-rounded">Usuń</a>
+                    </div>
+                    {% endif %}
+                    
+                    {% endif %}
+                </div>
+                <h1 class="title">{{ post.title }}
+                        <span class="tag is-rounded" style="color: #fff; background-color: {{ post.cat.color }}" >{{ post.cat }}</span>
+                </h1>  
+                <h2 class="subtitle">
+                    przez {{ user.username }}
+                </h2>
+                              
+            </div>
+        </div>
+    </section>
+{% endblock %}
 {% block content %}
 
-    <div class="columns">
-        <div class="column is-full">
-            <h1 class="title">{{ post.title }}
-                <span class="tag is-rounded" style="color: #fff; background-color: {{ post.cat.color }}" >{{ post.cat }}</span>
-            </h1>
-            <div class="content">
-                    {{ post.body|safe }}
-                </div>
+    <section class="section">
+
+        <div class="content">
+            {{ post.body|safe }}
         </div>
-    </div>
+
+        <hr class="hr">
+        <footer>
+            <p class="has-text-right is-size-7">Napisano: {{ post.pub_date }}</p>
+        </footer>
+
+    </section>
 
 {% endblock %}
+
+{% endif %}
