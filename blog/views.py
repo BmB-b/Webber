@@ -14,8 +14,18 @@ class BlogIndex(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogIndex, self).get_context_data(**kwargs)
-        context['counter'] = Post.objects.count()
+        filter_set = Post.objects.all()
+        counter = filter_set.count()
+        
+        if self.request.GET.get('filter'):
+            query = self.request.GET.get('filter')
+            filter_set = filter_set.filter(state=query)
+            counter = filter_set.count()
+
+        context['counter'] = counter
+        context['filter'] = filter_set
         return context
+
 
 class PostCreate(CreateView):
     model = Post
