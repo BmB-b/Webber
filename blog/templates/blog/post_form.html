@@ -46,8 +46,14 @@
             </div>
         </div>
 
-        <!-- Temporary solution -->
-        {{ form.pub_date }}
+        <div class="field">
+            <label class="label">Data publikacji</label>
+            <div class="control">
+                {% render_field form.pub_date id="bulmaCalendar" class="input column is-one-quarter" autocomplete="off" %}
+            </div>
+        </div>
+
+        <!-- Temporary -->
         {{ form.author }}
 
         <div class="field">
@@ -82,5 +88,16 @@
     </form>
 
 </section>
+
+<script>
+
+    // Init
+    const datepicker = bulmaCalendar.attach('#bulmaCalendar', {
+        dateFormat: 'DD.MM.YYYY',
+        startDate: new Date(),
+        clearButton: false
+    });
+
+</script>
 
 {% endblock %}
