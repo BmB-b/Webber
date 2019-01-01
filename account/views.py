@@ -1,11 +1,17 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 from .forms import SignUpForm
 
 # Create your views here.
+@login_required
 def dashboard(request):
     return render(request, 'account/dashboard.html')
+
+@login_required
+def edit(request):
+    return render(request, 'account/edit.html')
 
 def register(request):
     
