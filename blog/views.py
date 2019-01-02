@@ -26,11 +26,16 @@ class BlogIndex(ListView):
         context['filter'] = filter_set
         return context
 
-
 class PostCreate(CreateView):
     model = Post
-    fields = ['title','body','pub_date','state','author','cat','thumb']
+    fields = ['title','body','pub_date','state','cat','thumb']
     success_url = reverse_lazy('blog:index')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super(PostCreate,self).form_valid(form)
+
+
 
 class PostView(DetailView):
     model = Post
