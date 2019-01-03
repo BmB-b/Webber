@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
 from .models import Post
@@ -19,8 +19,13 @@ class BlogIndex(ListView):
         
         if self.request.GET.get('filter'):
             query = self.request.GET.get('filter')
-            filter_set = filter_set.filter(state=query)
-            counter = filter_set.count()
+
+            # Simple secure
+            if query in str(range(1,3)):
+                filter_set = filter_set.filter(state=query)
+                counter = filter_set.count()
+            else:
+                redirect('blog:index')
 
         context['counter'] = counter
         context['filter'] = filter_set
