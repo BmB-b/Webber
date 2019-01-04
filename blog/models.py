@@ -26,6 +26,7 @@ class Post(models.Model):
     title = models.CharField(max_length=60)
     body = RichTextField(max_length=10000)
     pub_date = models.DateField()
+    slug = models.SlugField(unique=True, blank=True)
     state = models.IntegerField(default=STATE_CHOICES[0][0], choices=STATE_CHOICES)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     cat = models.ForeignKey(Category, to_field='identy', on_delete=models.CASCADE, default=1)
