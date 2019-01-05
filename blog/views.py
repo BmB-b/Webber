@@ -47,7 +47,7 @@ class PostView(DetailView):
 
 class PostEdit(UpdateView):
     model = Post
-    fields = ['title','body','pub_date','state','author','cat','thumb']
+    fields = ['title','body','pub_date','state','cat','thumb']
 
 class PostDelete(DeleteView):
     model = Post

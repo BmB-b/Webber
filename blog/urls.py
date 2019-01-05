@@ -13,11 +13,11 @@ urlpatterns = [
     path('add/', views.PostCreate.as_view(), name='create'),
     
     # View post detail
-    path('<int:pk>/', views.PostView.as_view(), name='view'),
+    path('<slug:slug>-<int:pk>/', views.PostView.as_view(), name='view'),
     
     # Update exists post
-    path('<int:pk>/edit', views.PostEdit.as_view(), name='edit'),
+    path('<slug:slug>-<int:pk>/edit', views.PostEdit.as_view(), name='edit'),
     
     # Delete exists post
-    path('<int:pk>/delete', views.PostDelete.as_view(), name='delete'),
+    path('<slug:slug>-<int:pk>/delete', views.PostDelete.as_view(), name='delete'),
 ]

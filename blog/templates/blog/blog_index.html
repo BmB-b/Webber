@@ -61,7 +61,7 @@
                                 <div class="media-content">
                                 <div class="content">
                                     <p>
-                                    <strong><a href="{{el.id}}">{{ el.title }}</a></strong> <small>@{{ el.author }}</small>
+                                    <strong><a href="{% url 'blog:view' slug=el.slug pk=el.id %}">{{ el.title }}</a></strong> <small>@{{ el.author }}</small>
                                     <br>
                                     {{ el.snippet|safe }}
                                     <br>
