@@ -30,6 +30,9 @@ urlpatterns = [
     # Blog
     path('blog/', include('blog.urls')),
 
+    # Contact
+    path('contact/', include('contact.urls')),
+
     # Login/register
     path('account/', include('account.urls')),
     path('account/', include('django.contrib.auth.urls')),

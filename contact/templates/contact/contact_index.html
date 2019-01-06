@@ -1,0 +1,64 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Formularz kontaktowy{% endblock %}
+
+{% block content %}
+
+<section class="section">
+    <h1 class="title">Formularz kontaktowy</h1>
+    <h2 class="subtitle">
+  Chciałbyś się z nami <strong>skontaktować</strong>? Wypełnij poniższy formularz a napewno się odezwiemy.
+    </h2>
+<hr>
+<div class="columns tile is-ancestor">
+
+    <div class="column tile is-parent is-two-quarters">
+
+            <form class="column" action="{% url 'contact:send' %}" method="post">
+                    {% csrf_token %}
+                
+                    <div class="field">
+                        <label class="label">Temat:</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Podaj tytuł" name="subject">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email:</label>
+                        <div class="control">
+                            <input class="input" type="email" placeholder="Podaj email" name="responder">
+                        </div>
+                        <!-- <p class="help is-danger">This email is invalid</p> -->
+                    </div>
+                    <div class="field">
+                        <label class="label">Wiadomość:</label>
+                        <div class="control">
+                            <textarea class="textarea" placeholder="Wprowadź wiadomość..." name="message"></textarea>
+                        </div>
+                    </div>
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-link">Wyślij</button>
+                        </div>
+                        <div class="control">
+                            <button class="button is-text">Anuluj</button>
+                        </div>
+                    </div>
+                
+                </form>
+
+    </div>
+    <div class="column tile" style="justify-content: center;">
+        <div class="content">
+            
+                <?xml version="1.0" encoding="UTF-8"?><svg height="256" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#4d91bb;}.cls-2{fill:#2175aa;}.cls-3{fill:#c3edf5;}.cls-4{fill:#87dbec;}.cls-5{fill:#7ad0cb;}</style></defs><g data-name="39 Email Marketing"><rect class="cls-1" x="16" y="40" width="96" height="72"/><polygon class="cls-2" points="112 40 70.86 70.86 68.07 68.07"/><polygon class="cls-2" points="16 40 57.14 70.86 59.93 68.07"/><rect class="cls-3" transform="translate(128) rotate(90)" x="16" y="28" width="96" height="72"/><polygon class="cls-4" points="100 47.67 68.07 68.07 70.86 70.86 100 49"/><polygon class="cls-4" points="28 47.67 59.93 68.07 57.14 70.86 28 49"/><rect class="cls-5" x="59.93" y="27.47" width="31.5" height="6"/><rect class="cls-5" x="59.93" y="37.47" width="31.5" height="6"/><rect class="cls-5" x="36.57" y="47.47" width="54.86" height="6"/><polygon class="cls-1" points="112 112 16 112 16 40"/><polygon class="cls-1" points="16 112 112 112 112 40"/><polygon class="cls-1" points="112 112 16 112 64 64"/><polygon class="cls-2" points="112 112 73.33 69 70.86 70.86"/><polygon class="cls-2" points="16 112 54.67 69 57.14 70.86"/><rect class="cls-5" x="36.57" y="27.47" width="19.36" height="16"/></g></svg>
+        
+        </div>
+    </div>
+
+
+</div>
+</section>
+
+
+{% endblock %}

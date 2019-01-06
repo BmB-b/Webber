@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'account',
     'blog',
+    'contact',
     'colorful',
     'ckeditor',
     'widget_tweaks',
@@ -152,3 +153,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 LOGIN_URL = '/account/login'
 LOGIN_REDIRECT_URL = '/'
+
+# Mail settings
+
+EMAIL_HOST = ''
+EMAIL_PORT = 587
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
