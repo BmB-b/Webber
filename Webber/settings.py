@@ -156,6 +156,7 @@ LOGIN_REDIRECT_URL = '/'
 
 # Mail settings
 
+EMAIL_ADMIN = 'admin@example.com'
 EMAIL_HOST = ''
 EMAIL_PORT = 587
 EMAIL_HOST_USER = ''

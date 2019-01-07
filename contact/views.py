@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
-from django.core.mail import BadHeaderError, send_mail
+from django.core.mail import BadHeaderError, EmailMessage
+from django.conf import settings
 
 # Create your views here.
 class ContactIndex(View):
@@ -13,10 +14,22 @@ class ContactIndex(View):
 def send(request):
     subject = request.POST.get('subject','')
     message = request.POST.get('message','')
-    responser = request.POST.get('responder','')
-    if subject and message and responser:
+    responder = request.POST.get('responder','')
+    if subject and message and responder:
         try:
-            send_mail(subject, message, responser, ['yourEmail@example.com'])
+
+            # Initial fields
+            email = EmailMessage(
+                subject,
+                message,
+                responder,
+                [settings.EMAIL_ADMIN],
+                reply_to=[responder],
+            )
+
+            # Send email
+            email.send()
+
         except BadHeaderError:
             return HttpResponse('Invalid header found')
         return HttpResponseRedirect('/contact/thanks')
