@@ -8,7 +8,6 @@ urlpatterns = [
 
     # Basic route
     path('', views.ContactIndex.as_view(), name='index'),
-    path('send', views.send, name='send'),
-    path('thanks', views.thanks, name='thanks'),
+    path('thanks', views.ContactSuccess.as_view(), name='thanks'),
 
 ]
