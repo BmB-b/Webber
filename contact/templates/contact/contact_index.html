@@ -23,6 +23,7 @@
                             <input class="input" type="text" placeholder="Podaj tytuł" name="subject">
                         </div>
                     </div>
+                    {{ form.subject.errors }}
                     <div class="field">
                         <label class="label">Email:</label>
                         <div class="control">
@@ -30,12 +31,14 @@
                         </div>
                         <!-- <p class="help is-danger">This email is invalid</p> -->
                     </div>
+                    {{ form.responser.errors }}
                     <div class="field">
                         <label class="label">Wiadomość:</label>
                         <div class="control">
                             <textarea class="textarea" placeholder="Wprowadź wiadomość..." name="message"></textarea>
                         </div>
                     </div>
+                    {{ form.message.errors }}
                     <div class="field is-grouped">
                         <div class="control">
                             <button class="button is-link">Wyślij</button>
