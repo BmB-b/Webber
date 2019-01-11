@@ -32,7 +32,7 @@ class Post(models.Model):
     state = models.IntegerField(default=STATE_CHOICES[0][0], choices=STATE_CHOICES)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     cat = models.ForeignKey(Category, to_field='identy', on_delete=models.CASCADE, default=1)
-    thumb = models.ImageField(default="default.png")
+    thumb = models.ImageField(default='default.png', blank=True, upload_to='post/%Y/%m/%D/')
 
     def __str__(self):
         return self.title

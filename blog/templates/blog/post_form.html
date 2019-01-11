@@ -33,15 +33,20 @@
             <label class="label">Miniaturka</label>
             <div class="file has-name">
                 <label class="file-label">
-                    {{ form.thumb|add_class:'file-input' }}
+                    {% render_field form.thumb class="file-input" onchange="this.parentNode.lastElementChild.innerHTML = this.files[0].name" %}
+                    
                     <span class="file-cta">
                         <span class="file-icon">
                             <i class="fas fa-upload"></i>
                         </span>
                         <span class="file-label">
-                            Choose a file…
+                            Wybierz plik…
                         </span>
                     </span>
+                    <span class="file-name">
+                        default.png
+                    </span>
+
                 </label>
             </div>
         </div>
