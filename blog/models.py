@@ -8,6 +8,7 @@ from .utils import get_unique_slug
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+from django.utils.html import strip_tags
 from django.db.models.signals import pre_save
 
 # Create your models here.
@@ -41,7 +42,7 @@ class Post(models.Model):
         return reverse('blog:view', kwargs={'pk': self.id, 'slug': self.slug})
 
     def snippet(self):
-        return self.body[:250] + '...'
+        return strip_tags(self.body[:300]) + '...'
 
 def post_save_slug(sender, instance, *args, **kwargs):
     if not instance.slug:

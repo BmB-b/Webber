@@ -60,11 +60,12 @@
                                 </figure>
                                 <div class="media-content">
                                 <div class="content">
+                                    <h2 class="title is-5">
+                                        <strong><a href="{% url 'blog:view' slug=el.slug pk=el.id %}">{{ el.title }}</a></strong> <small>@{{ el.author }}</small>
+                                    </h2>
                                     <p>
-                                    <strong><a href="{% url 'blog:view' slug=el.slug pk=el.id %}">{{ el.title }}</a></strong> <small>@{{ el.author }}</small>
-                                    <br>
-                                    {{ el.snippet|safe }}
-                                    <br>
+                                        {{ el.snippet|safe }}
+                                    </p>
                                     <span class="tag is-rounded" style="background-color: {{ el.cat.color }}; color: #fff;">{{ el.cat }}</span>
                                     </p>
                                 </div>
