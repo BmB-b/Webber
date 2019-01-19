@@ -45,49 +45,132 @@
                 </div>
             </div>
         </div>
-        <div class="columns">
-            <div class="column is-full">
-                
-                <!-- Basic information -->
+        <div id="tabs-content" class="columns">
 
-                <div class="field">
-                    <label class="label">Imie</label>
-                    <div class="control">
-                        <input class="input" type="text" name="first_name" placeholder="np. Tomek">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Nazwisko</label>
-                    <div class="control">
-                        <input class="input" type="text" name="last_name" placeholder="np. Kowalski">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Strona WWW</label>
-                    <div class="control">
-                        <input class="input" type="text" name="url" placeholder="http://example.com">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Biografia</label>
-                    <div class="control">
-                        <textarea class="textarea" name="biography" placeholder="Napisz coś o sobie..."></textarea>
-                    </div>
-                </div>
+            <form method="POST" style="width: 100%">
+                {% csrf_token %}
 
+                <div class="column is-full">
+                    
+                    <!-- Basic information -->
+
+                    <div class="field">
+                        <label class="label">Imie</label>
+                        <div class="control">
+                            <input class="input" type="text" value="{{ content.first_name }}" name="first_name" placeholder="np. Tomek">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Nazwisko</label>
+                        <div class="control">
+                            <input class="input" type="text" value="{{ content.last_name }}" name="last_name" placeholder="np. Kowalski">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Strona WWW</label>
+                        <div class="control">
+                            <input class="input" type="text" value="{{ content.url }}" name="url" placeholder="http://example.com">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Biografia</label>
+                        <div class="control">
+                            <textarea class="textarea" name="biography" placeholder="Napisz coś o sobie...">{{ content.biography }}</textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="column is-full is-hidden">
+                    <div class="field">
+                        <label class="label">Hasło:</label>
+                        <p class="control has-icons-left">
+                            <input class="input" type="password">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <label class="label">Powtórz hasło:</label>
+                        <p class="control has-icons-left">
+                            <input class="input" type="password">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="column is-full is-hidden">
+                    <div class="file has-name">
+                        <label class="file-label">
+                            <input class="file-input" type="file" name="resume">
+                            <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Choose a file…
+                            </span>
+                            </span>
+                            <span class="file-name">
+                            {{ content.image }}
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="column is-full is-hidden">
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input" type="email" value="{{ content.email }}">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="column is-full is-hidden">
-                test
+            <div class="columns">
+                <div class="column is-full">
+                    <div class="field is-grouped">
+                        <div class="control">
+                        <button class="button is-link">Aktualizuj</button>
+                        </div>
+                        <div class="control">
+                        <button class="button is-text">Anuluj</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="column is-full is-hidden">
-                test
-            </div>
-            <div class="column is-full is-hidden">
-                test
-            </div>
-        </div>
         
+        </form>
     </section>
+
+    <script>
+        const links = document.querySelectorAll('#tabs li');
+        const tabs = document.querySelectorAll('#tabs-content div.column');
+
+        function changeTabs(item, sid){
+            tabs.forEach((el, i) => {
+                if(sid == i){
+                    el.classList.remove('is-hidden')
+                } else {
+                    el.classList.add('is-hidden')
+                }
+            })
+        }
+
+        links.forEach((el, i) => {
+            el.addEventListener('click', function(event) {
+
+                event.preventDefault();
+                changeTabs(el, i)
+
+            })
+        })
+
+
+    </script>
 
 
 {% endblock %}

@@ -1,8 +1,10 @@
+from django.http import Http404
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
 from .forms import SignUpForm
+from .models import ExtendedUser
 
 # Create your views here.
 @login_required
@@ -11,7 +13,15 @@ def dashboard(request):
 
 @login_required
 def edit(request):
-    return render(request, 'account/edit.html')
+    try:
+        query = ExtendedUser.objects.get(id=request.user.id)
+    except ExtendedUser.DoesNotExist:
+        raise Http404("User does not exist")
+
+    if request.method == 'POST':
+        print('POSTED')
+
+    return render(request, 'account/edit.html', {'content': query})
 
 def register(request):
     
