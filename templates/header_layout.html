@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="container">
         <div class="navbar-brand">
@@ -15,24 +17,24 @@
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
             
-            <a href="{% url 'index' %}" class="navbar-item">Strona Główna</a>
-            <a href="{% url 'blog:index' %}" class="navbar-item">Blog</a>
+            <a href="{% url 'index' %}" class="navbar-item">{% trans "menu_home" %}</a>
+            <a href="{% url 'blog:index' %}" class="navbar-item">{% trans "menu_blog" %}</a>
       
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
-                Inne
+                {% trans "menu_other" %}
               </a>
       
               <div class="navbar-dropdown">
                 <a href="{% url 'about' %}" class="navbar-item">
-                  O nas
+                  {% trans "menu_about" %}
                 </a>
                 <a href="{% url 'contact:index' %}" class="navbar-item">
-                  Kontakt
+                  {% trans "menu_contact" %}
                 </a>
                 <hr class="navbar-divider">
                 <a class="navbar-item">
-                  Zgłoś błąd
+                  {% trans "menu_report" %}
                 </a>
               </div>
             </div>
@@ -48,14 +50,14 @@
           
                   <div class="navbar-dropdown is-right">
                     <a href="{% url 'account:dashboard' %}" class="navbar-item">
-                      Panel
+                      {% trans "ui_dashboard" %}
                     </a>
                     <a href="{% url 'account:edit' %}" class="navbar-item">
-                      Edytuj profil
+                      {% trans "ui_edit_profile" %}
                     </a>
                     <hr class="navbar-divider">
                     <a href="{% url 'logout' %}" class="navbar-item">
-                      Wyloguj się
+                      {% trans "ui_logout" %}
                     </a>
                   </div>
                 </div>
@@ -66,10 +68,10 @@
               <div class="navbar-item">
                 <div class="buttons">
                   <a href="{% url 'account:register' %}" class="button is-primary">
-                    <strong>Dołącz do nas</strong>
+                    <strong>{% trans "ui_register" %}</strong>
                   </a>
                   <a href="{% url 'login' %}" class="button is-light">
-                    Zaloguj
+                    {% trans "ui_login" %}
                   </a>
                 </div>
               </div>

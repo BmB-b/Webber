@@ -132,6 +132,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
+###
+# CKEditor settings
+###
+
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor"
 # CKEDITOR_UPLOAD_PATH = "media/"
 CKEDITOR_CONFIGS = {
@@ -148,13 +152,25 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+##
+# I18N
+##
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
+]
+
+##
+# Media
+##
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-LOGIN_URL = '/account/login'
-LOGIN_REDIRECT_URL = '/'
 
+###
 # Mail settings
+###
 
 EMAIL_ADMIN = 'admin@example.com'
 EMAIL_HOST = ''
@@ -162,3 +178,11 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
+
+
+##
+# Other stuff
+##
+
+LOGIN_URL = '/account/login'
+LOGIN_REDIRECT_URL = '/'
