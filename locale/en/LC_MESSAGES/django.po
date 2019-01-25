@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-25 22:50+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/header_layout.html:20
+msgid "menu_home"
+msgstr "Home"
+
+#: templates/header_layout.html:21
+msgid "menu_blog"
+msgstr "Blog"
+
+#: templates/header_layout.html:25
+msgid "menu_other"
+msgstr "Other"
+
+#: templates/header_layout.html:30
+msgid "menu_about"
+msgstr "About"
+
+#: templates/header_layout.html:33
+msgid "menu_contact"
+msgstr "Contact"
+
+#: templates/header_layout.html:37
+msgid "menu_report"
+msgstr "Report error"
+
+#: templates/header_layout.html:53
+msgid "ui_dashboard"
+msgstr "Profile"
+
+#: templates/header_layout.html:56
+msgid "ui_edit_profile"
+msgstr "Edit profile"
+
+#: templates/header_layout.html:60
+msgid "ui_logout"
+msgstr "Logout"
+
+#: templates/header_layout.html:71
+msgid "ui_register"
+msgstr "Join us"
+
+#: templates/header_layout.html:74
+msgid "ui_login"
+msgstr "Log in"
