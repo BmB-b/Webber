@@ -160,15 +160,25 @@
             })
         }
 
+        function changeLinks(item, sid, elas){
+
+            links.forEach((el, i) => {
+                if(sid == i){
+                    el.classList.add('is-active')
+                } else {
+                    el.classList.remove('is-active')
+                }
+            })
+        }
+
         links.forEach((el, i) => {
             el.addEventListener('click', function(event) {
 
-                event.preventDefault();
-                changeTabs(el, i)
+                changeLinks(el, i, event);
+                changeTabs(el, i);
 
             })
         })
-
 
     </script>
 
