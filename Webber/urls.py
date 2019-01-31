@@ -24,7 +24,7 @@ from . import views
 urlpatterns = [
 
     # Index
-    path('', views.index, name='index'),
+    path('', include('home.urls')),
     path('about', views.about, name='about'),
 
     # Blog

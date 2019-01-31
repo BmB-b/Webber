@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'account',
+    'home',
     'blog',
     'contact',
     'colorful',
