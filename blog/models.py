@@ -11,6 +11,8 @@ from django.urls import reverse
 from django.utils.html import strip_tags
 from django.db.models.signals import pre_save
 
+from django_random_queryset import RandomManager
+
 # Create your models here.
 class Category(models.Model):
 
@@ -34,6 +36,9 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     cat = models.ForeignKey(Category, to_field='identy', on_delete=models.CASCADE, default=1)
     thumb = models.ImageField(default='default.png', blank=True, upload_to='post/%Y/%m/%D/')
+
+    # Random
+    objects = RandomManager()
 
     def __str__(self):
         return self.title

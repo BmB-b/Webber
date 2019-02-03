@@ -1,0 +1,16 @@
+<!-- Widget template -->
+<div class="tile is-child notification is-warning">
+    <h3 class="title">{{ category.name }}</h3>
+    <p class="subtitle">
+        {{ category.desc }}
+    </p>
+    
+    {% if posts %}  
+        <ul>
+            {% for el in posts %}
+                <li><a href="{{ el.author }}/{{ el.slug }}-{{ el.pk }}">{{ el }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</div>

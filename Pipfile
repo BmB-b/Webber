@@ -11,6 +11,7 @@ pillow = "*"
 django-widget-tweaks = "*"
 django-colorful = "*"
 django-ckeditor = "*"
+django-random-queryset = "*"
 
 [requires]
 python_version = "3.7"

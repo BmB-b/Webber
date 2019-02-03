@@ -1,0 +1,37 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Strona Glowna{% endblock %}
+
+{% block content %}
+
+
+    <div class="columns">
+
+        <div class="column is-three-quarters">
+            {% block home_slider %}
+            {% endblock %}
+        </div>
+        
+        <div class="column is-one-quarter">
+
+            <div class="tile is-parent is-vertical">
+                
+                {% if widgets %}
+
+                    {% load widget_extras %}
+
+                    {% for item in widgets %}
+
+                        {% widget_extras item %}
+
+                    {% endfor %}
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
