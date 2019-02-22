@@ -4,183 +4,214 @@
 
 {% block content %}
 
-    <section class="section">
-        <div class="columns">
-            <div class="column is-full">
+<section class="section">
+    <div class="columns">
+        <div class="column is-full">
 
-                    <h1 class="title">Edytuj profil</h1>
-                    <h2 class="subtitle">Chciałbyś zaktualizować jakieś ważne informacje na swój temat?</h2>
-                    
-            </div>
+            <h1 class="title">Edytuj profil</h1>
+            <h2 class="subtitle">Chciałbyś zaktualizować jakieś ważne informacje na swój temat?</h2>
+
         </div>
-        <div class="columns">
-            <div class="column is-full">
-                <div class="tabs is-boxed">
-                    <ul id="tabs">
-                        <li class="is-active">
-                            <a>
+    </div>
+    <div class="columns">
+
+        <div class="column is-full">
+            <div class="tabs is-boxed">
+                <ul id="tabs">
+                    <li class="is-active">
+                        <a>
                             <span class="icon is-small"><i class="fas fa-user" aria-hidden="true"></i></span>
                             <span>Podstawowe dane</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="icon is-small"><i class="fas fa-key" aria-hidden="true"></i></span>
-                                <span>Zmień hasło</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="icon is-small"><i class="far fa-user-circle" aria-hidden="true"></i></span>
-                                <span>Edytuj avatar</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span class="icon is-small"><i class="fas fa-envelope" aria-hidden="true"></i></span>
-                                <span>Zmień e-mail</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <span class="icon is-small"><i class="fas fa-key" aria-hidden="true"></i></span>
+                            <span>Zmień hasło</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <span class="icon is-small"><i class="far fa-user-circle" aria-hidden="true"></i></span>
+                            <span>Edytuj avatar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <span class="icon is-small"><i class="fas fa-envelope" aria-hidden="true"></i></span>
+                            <span>Zmień e-mail</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div id="tabs-content" class="columns">
 
-            <form method="POST" style="width: 100%">
-                {% csrf_token %}
+    </div>
+    <div id="tabs-content" class="columns">
 
-                <div class="column is-full">
-                    
-                    <!-- Basic information -->
+        <form method="POST" style="width: 100%">
+            {% csrf_token %}
 
-                    <div class="field">
-                        <label class="label">Imie</label>
-                        <div class="control">
-                            <input class="input" type="text" value="{{ content.first_name }}" name="first_name" placeholder="np. Tomek">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Nazwisko</label>
-                        <div class="control">
-                            <input class="input" type="text" value="{{ content.last_name }}" name="last_name" placeholder="np. Kowalski">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Strona WWW</label>
-                        <div class="control">
-                            <input class="input" type="text" value="{{ content.url }}" name="url" placeholder="http://example.com">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Biografia</label>
-                        <div class="control">
-                            <textarea class="textarea" name="biography" placeholder="Napisz coś o sobie...">{{ content.biography }}</textarea>
-                        </div>
-                    </div>
+            <div class="column is-full">
 
-                </div>
-                <div class="column is-full is-hidden">
-                    <div class="field">
-                        <label class="label">Hasło:</label>
-                        <p class="control has-icons-left">
-                            <input class="input" type="password">
-                            <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <label class="label">Powtórz hasło:</label>
-                        <p class="control has-icons-left">
-                            <input class="input" type="password">
-                            <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
+                <!-- Basic information -->
+
+                <div class="field">
+                    <label class="label">Imie</label>
+                    <div class="control">
+                        <input class="input" type="text" value="{{ content.first_name }}" name="first_name"
+                            placeholder="np. Tomek">
                     </div>
                 </div>
-                <div class="column is-full is-hidden">
-                    <div class="file has-name">
-                        <label class="file-label">
-                            <input class="file-input" type="file" name="resume">
-                            <span class="file-cta">
+                <div class="field">
+                    <label class="label">Nazwisko</label>
+                    <div class="control">
+                        <input class="input" type="text" value="{{ content.last_name }}" name="last_name"
+                            placeholder="np. Kowalski">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Strona WWW</label>
+                    <div class="control">
+                        <input class="input" type="text" value="{{ content.url }}" name="url"
+                            placeholder="http://example.com">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Biografia</label>
+                    <div class="control">
+                        <textarea class="textarea" name="biography"
+                            placeholder="Napisz coś o sobie...">{{ content.biography }}</textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="column is-full is-hidden">
+                <div class="field">
+                    <label class="label">Stare hasło:</label>
+                    <p class="control has-icons-left">
+                        <input class="input" type="password" name="old_password">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
+                </div>
+                <hr>
+                <div class="field">
+                    <label class="label">Hasło:</label>
+                    <p class="control has-icons-left">
+                        <input class="input" type="password" name="new_password1">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Powtórz hasło:</label>
+                    <p class="control has-icons-left">
+                        <input class="input" type="password" name="new_password2">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="column is-three-fifths is-offset-one-fifth is-hidden">
+
+                <article class="media">
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <h3>Twój obecny awatar:</h3>
+                            </p>
+                        </div>
+                    </div>
+                    <figure class="media-right">
+                        <p class="image is-128x128">
+                            <img class="is-rounded" src="{{ MEDIA_URL }}{{ content.image }}">
+                        </p>
+                    </figure>
+                </article>
+                <div class="file has-name">
+                    <label class="file-label">
+                        <input class="file-input" type="file" name="resume">
+                        <span class="file-cta">
                             <span class="file-icon">
                                 <i class="fas fa-upload"></i>
                             </span>
                             <span class="file-label">
                                 Choose a file…
                             </span>
-                            </span>
-                            <span class="file-name">
+                        </span>
+                        <span class="file-name">
                             {{ content.image }}
-                            </span>
-                        </label>
-                    </div>
+                        </span>
+                    </label>
                 </div>
-                <div class="column is-full is-hidden">
-                    <div class="field">
-                        <label class="label">Email</label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" type="email" value="{{ content.email }}">
-                            <span class="icon is-small is-left">
+            </div>
+            <div class="column is-full is-hidden">
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" type="email" name="email" value="{{ content.email }}">
+                        <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
-                            </span>
-                        </div>
+                        </span>
                     </div>
                 </div>
             </div>
-            <div class="columns">
-                <div class="column is-full">
-                    <div class="field is-grouped">
-                        <div class="control">
-                        <button class="button is-link">Aktualizuj</button>
-                        </div>
-                        <div class="control">
-                        <button class="button is-text">Anuluj</button>
-                        </div>
-                    </div>
+    </div>
+    <div class="columns">
+        <div class="column is-full">
+            <div class="field is-grouped">
+                <div class="control">
+                    <button type="submit" class="button is-link">Aktualizuj</button>
+                </div>
+                <div class="control">
+                    <button class="button is-text">Anuluj</button>
                 </div>
             </div>
-        
-        </form>
-    </section>
+        </div>
+    </div>
 
-    <script>
-        const links = document.querySelectorAll('#tabs li');
-        const tabs = document.querySelectorAll('#tabs-content div.column');
+    </form>
+</section>
 
-        function changeTabs(item, sid){
-            tabs.forEach((el, i) => {
-                if(sid == i){
-                    el.classList.remove('is-hidden')
-                } else {
-                    el.classList.add('is-hidden')
-                }
-            })
-        }
+<script>
+    const links = document.querySelectorAll('#tabs li');
+    const tabs = document.querySelectorAll('#tabs-content div.column');
 
-        function changeLinks(item, sid, elas){
+    function changeTabs(item, sid) {
+        tabs.forEach((el, i) => {
+            if (sid == i) {
+                el.classList.remove('is-hidden')
+            } else {
+                el.classList.add('is-hidden')
+            }
+        })
+    }
 
-            links.forEach((el, i) => {
-                if(sid == i){
-                    el.classList.add('is-active')
-                } else {
-                    el.classList.remove('is-active')
-                }
-            })
-        }
+    function changeLinks(item, sid, elas) {
 
         links.forEach((el, i) => {
-            el.addEventListener('click', function(event) {
-
-                changeLinks(el, i, event);
-                changeTabs(el, i);
-
-            })
+            if (sid == i) {
+                el.classList.add('is-active')
+            } else {
+                el.classList.remove('is-active')
+            }
         })
+    }
 
-    </script>
+    links.forEach((el, i) => {
+        el.addEventListener('click', function (event) {
+
+            changeLinks(el, i, event);
+            changeTabs(el, i);
+
+        })
+    })
+
+</script>
 
 
 {% endblock %}
