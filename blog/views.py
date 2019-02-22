@@ -3,6 +3,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
+from .choices import STATE_CHOICES  
+
 from .models import Post
 
 # Create your views here.
@@ -17,12 +19,22 @@ class BlogIndex(ListView):
         filter_set = Post.objects.all()
         counter = filter_set.count()
         
+        # GET: ?filter
         if self.request.GET.get('filter'):
-            query = self.request.GET.get('filter')
+            getState = self.request.GET.get('filter')
 
-            # Simple secure
-            if query in str(range(1,3)):
-                filter_set = filter_set.filter(state=query)
+            if int(getState) in range(1, len(STATE_CHOICES)+1):
+                filter_set = filter_set.filter(state=getState)
+                counter = filter_set.count()
+            else:
+                redirect('blog:index')
+        
+        # GET: ?q
+        if self.request.GET.get('q'):
+            getTitle = self.request.GET.get('q')
+
+            if isinstance(getTitle, str):
+                filter_set = filter_set.filter(title=getTitle)
                 counter = filter_set.count()
             else:
                 redirect('blog:index')

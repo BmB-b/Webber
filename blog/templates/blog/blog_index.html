@@ -23,14 +23,23 @@
             <div class="level-item">
                 <div class="field has-addons">
                 <p class="control">
-                    <input class="input" type="text" placeholder="Znajdź wpis">
+                    <input id="search" class="input" type="text" placeholder="Znajdź wpis">
                 </p>
                 <p class="control">
-                    <button class="button">
+                    <button type="submit" id="btn" class="button">
                     Szukaj
                     </button>
                 </p>
                 </div>
+            
+                <script>
+                    (function () {
+                        document.querySelector('#btn').addEventListener('click', function (e){
+                            e.preventDefault();
+                            (location.search !== '') ? location.href += `&q=${document.querySelector('#search').value}` : location.href = `?q=${document.querySelector('#search').value}`;
+                        });
+                    })();
+                </script>
             </div>
             </div>
         
@@ -65,19 +74,19 @@
                                 </p>
                                 </figure>
                                 <div class="media-content">
-                                <div class="content">
-                                    <h2 class="title is-5">
-                                        <strong><a href="{% url 'blog:view' slug=el.slug pk=el.id %}">{{ el.title }}</a></strong> <small>@{{ el.author }}</small>
-                                    </h2>
-                                    <p>
-                                        {{ el.snippet|safe }}
-                                    </p>
-                                    <span class="tag is-rounded" style="background-color: {{ el.cat.color }}; color: #fff;">{{ el.cat }}</span>
-                                    </p>
-                                </div>
+                                    <div class="content">
+                                        <h2 class="title is-5">
+                                            <strong><a href="{% url 'blog:view' slug=el.slug pk=el.id %}">{{ el.title }}</a></strong> <small>@{{ el.author }}</small>
+                                        </h2>
+                                        <p>
+                                            {{ el.snippet|safe }}
+                                        </p>
+                                        <span class="tag is-rounded" style="background-color: {{ el.cat.color }}; color: #fff;">{{ el.cat }}</span>
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="media-right">
-                                <button class="delete"></button>
+                                    <button class="delete"></button>
                                 </div>
                         </article>
 
