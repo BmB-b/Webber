@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-25 22:50+0100\n"
+"POT-Creation-Date: 2019-02-22 22:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: account/choices.py:4
+msgid "gender_choices_0"
+msgstr "Male"
+
+#: account/choices.py:5
+msgid "gender_choices_1"
+msgstr "Female"
+
+#: blog/choices.py:4
+msgid "state_choices_1"
+msgstr "Draft"
+
+#: blog/choices.py:5
+msgid "state_choices_2"
+msgstr "Published"
+
+#: blog/choices.py:6
+msgid "state_choices_3"
+msgstr "Unpublished"
 
 #: templates/header_layout.html:20
 msgid "menu_home"
