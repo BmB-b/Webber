@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
@@ -8,7 +8,7 @@ from .choices import STATE_CHOICES
 from .models import Post
 
 # Create your views here.
-class BlogIndex(ListView):
+class BlogIndex(LoginRequiredMixin, ListView):
     model = Post
     template_name = 'blog/blog_index.html'
     context_object_name = 'context'
@@ -43,7 +43,7 @@ class BlogIndex(ListView):
         context['filter'] = filter_set
         return context
 
-class PostCreate(CreateView):
+class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title','body','pub_date','state','cat','thumb']
     success_url = reverse_lazy('blog:index')
@@ -57,10 +57,10 @@ class PostCreate(CreateView):
 class PostView(DetailView):
     model = Post
 
-class PostEdit(UpdateView):
+class PostEdit(LoginRequiredMixin, UpdateView):
     model = Post
     fields = ['title','body','pub_date','state','cat','thumb']
 
-class PostDelete(DeleteView):
+class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('blog:index')
