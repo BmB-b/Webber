@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-22 22:56+0100\n"
+"POT-Creation-Date: 2019-03-18 21:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,18 @@ msgstr "Mężczyzna"
 #: account/choices.py:5
 msgid "gender_choices_1"
 msgstr "Kobieta"
+
+#: blog/admin.py:16
+msgid "admin_post_state_draft"
+msgstr "Oznacz wybrane jako szkic"
+
+#: blog/admin.py:20
+msgid "admin_post_state_publish"
+msgstr "Oznacz wybrane jako opublikowany"
+
+#: blog/admin.py:24
+msgid "admin_post_state_unpublish"
+msgstr "Oznacz wybrane jako nieopublikowany"
 
 #: blog/choices.py:4
 msgid "state_choices_1"
