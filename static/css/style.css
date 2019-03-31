@@ -1,3 +1,28 @@
-#id_gender li{ display: inline-block; }
-.django-ckeditor-widget{ width: 100%; }
-.bulma-datepicker{ z-index: 999 !important; }
+/* Main styles */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
+}
+
+/* Miscellaneous */
+
+#id_gender li {
+  display: inline-block;
+}
+.django-ckeditor-widget {
+  width: 100%;
+}
+.bulma-datepicker {
+  z-index: 999 !important;
+}
